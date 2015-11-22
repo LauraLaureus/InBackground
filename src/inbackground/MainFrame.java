@@ -38,6 +38,14 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         runInBackgroundButton = new javax.swing.JButton();
 
+        displayDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        displayDialog.setTitle("Running");
+        displayDialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                displayDialogWindowClosing(evt);
+            }
+        });
+
         infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         acceptButton.setText("Aceptar");
@@ -85,6 +93,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("InBackground Demo");
 
         jLabel1.setText("Autora: Laura del Pino Diaz");
 
@@ -144,6 +153,11 @@ public class MainFrame extends javax.swing.JFrame {
         task.cancel(true);
         infoLabel.setText("Tarea cancelada por el Usuario");
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void displayDialogWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_displayDialogWindowClosing
+        displayDialog.setVisible(false);
+        runInBackgroundButton.setEnabled(true);
+    }//GEN-LAST:event_displayDialogWindowClosing
 
     /**
      * @param args the command line arguments
